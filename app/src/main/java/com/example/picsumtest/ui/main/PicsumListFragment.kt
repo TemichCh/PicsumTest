@@ -8,10 +8,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,11 +29,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.example.picsumtest.data.model.Picsum
 import kotlinx.coroutines.FlowPreview
 
-class PicsumListFragment : NavHostFragment() {
+class PicsumListFragment : Fragment() {
     val id = "picsum_list_fragment"
 
     companion object {
@@ -83,17 +88,26 @@ fun PicsumList(viewModel: PiscumListViewModel) {
     }
 }
 
+@ExperimentalCoilApi
 @Composable
 fun PiscumItem(picsum: Picsum) {
-    Row(Modifier.padding(0.dp)) {
+    Row(Modifier.padding(5.dp), verticalAlignment = Alignment.CenterVertically) {
         Column() {
-            Image(
-                rememberImagePainter(data = "${picsum.url}.jpg".toUri()), "Изображение",
-                androidx.compose.ui.Modifier
-                    .width(100.dp)
-                    .height(40.dp), Alignment.TopCenter
+            Surface(Modifier
+                .height(250.dp)
+                .align(Alignment.CenterHorizontally)
+                /*.clip(CircleShape)*/) {
+                Image(
+                    painter = rememberImagePainter(data = "${picsum.download_url}.jpg"),
+                    contentDescription = "Изображение"
+                )
+            }
+            Text(
+                text = picsum.author,
+                Modifier
+                    .padding(15.dp)
+                    .align(Alignment.CenterHorizontally)
             )
-            Text(text = picsum.author)
         }
     }
 }
