@@ -34,28 +34,6 @@ import coil.compose.rememberImagePainter
 import com.example.picsumtest.data.model.Picsum
 import kotlinx.coroutines.FlowPreview
 
-class PicsumListFragment : Fragment() {
-    val id = "picsum_list_fragment"
-
-    companion object {
-        fun newInstance() = PicsumListFragment()
-    }
-
-    private val viewModel by lazy { ViewModelProvider(this).get(PiscumListViewModel::class.java) }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                PicsumList(viewModel)
-            }
-        }
-    }
-}
-
 @Composable
 fun PicsumList(viewModel: PiscumListViewModel) {
 

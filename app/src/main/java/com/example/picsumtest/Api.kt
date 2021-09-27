@@ -3,7 +3,6 @@ package com.example.picsumtest
 import com.example.picsumtest.data.model.Picsum
 import com.example.picsumtest.data.model.WeatherInfo
 import io.ktor.client.*
-import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*

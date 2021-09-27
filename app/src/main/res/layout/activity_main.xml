@@ -8,7 +8,7 @@
     android:paddingTop="?attr/actionBarSize"
     tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="0dp"
@@ -32,5 +32,5 @@
         app:navGraph="@navigation/mobile_navigation">
 
 
-    </fragment>
+    </fragment-->
 </androidx.constraintlayout.widget.ConstraintLayout>
